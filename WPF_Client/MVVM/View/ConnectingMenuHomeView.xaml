@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="WPF_Client.MVVM.View.ConnectingMenuHomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Client.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Width="400"
+         Height="200">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                    <GradientStop Color="#3aa0ff" Offset="0"/>
+                    <GradientStop Color="#ffc554" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+                <RectangleGeometry RadiusX="10"
+                            RadiusY="10"
+                            Rect="0,0,400,200"/>
+            </Border.Clip>
+
+            <Grid>
+                <StackPanel>
+                    <TextBlock x:Name="StatusTextBlock"
+                               HorizontalAlignment="Center"
+                        Foreground="White"
+                        FontSize="28"
+                        Margin="20"/>
+
+                    <TextBlock x:Name="NameTextBlock"
+                               HorizontalAlignment="Center"
+                        Foreground="White"
+                        FontSize="18"
+                        Margin="10"/>
+
+                    <Button x:Name="Close_Connection_BTN" 
+                            Style="{StaticResource Button_1Theme}" 
+                            Margin="10" Click="Close_Connection_BTN_Click">
+                        Log Out
+                    </Button>
+
+                </StackPanel>
+
+                <Image Width="250"
+                Height="250"
+                Source="/Images/backgammon-board-1.png"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center" 
+                Margin="248,0,0,0"/>
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>

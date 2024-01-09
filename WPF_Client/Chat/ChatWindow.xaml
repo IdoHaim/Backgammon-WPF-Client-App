@@ -1,0 +1,180 @@
+﻿<Window x:Class="WPF_Client.Chat.ChatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Client.Chat"
+        mc:Ignorable="d"
+        Title="ChatWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/Image1.png"/>
+        </Border.Background>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid>
+                    <Grid.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.5"/>
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition/>
+                        
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Chat With&#x0a;"
+                               x:Name="Header"
+                               Grid.Row="0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="22" 
+                               TextAlignment="Center"
+                               />
+
+                    <TextBlock x:Name="DisconnectedIndicator"
+           Grid.Row="1"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           Foreground="White"
+           FontSize="16" 
+           TextAlignment="Center"
+           />
+
+                </Grid>
+
+                
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                
+            
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="75"/>
+            </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" x:Name="MenuBar">     <!-- for futer version -->
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.5"/>
+                    </StackPanel.Background>
+                </StackPanel>
+
+                
+                
+                
+                <!-- Messages area -->
+                <ScrollViewer  Grid.Row="1"
+                               Background="Transparent"
+                               >
+                    
+                <StackPanel x:Name="ContentPanel">
+                           
+                            
+                    
+                </StackPanel>
+                </ScrollViewer>     
+              
+
+                
+                
+                <!-- TextBox area -->
+
+                <Grid Grid.Row="2">
+                    <Grid.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.25"/>
+                    </Grid.Background>
+
+                    <StackPanel VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal"
+                                Width="auto">
+                        
+                        
+
+                    <!--<TextBox x:Name="MessageBlock" TextChanged="MessageBlock_TextChanged"
+                        Width="auto"
+               Height="40"            
+                      Margin="15,0,15,0"   
+               Style="{StaticResource ModernTextBox}" LostFocus="MessageBlock_LostFocus"/>-->
+
+                        
+                        
+                         <Border CornerRadius="10"
+                                 Background="#353340"
+                                 Width="400" Height="40">
+
+                              <Grid>
+                                  <Rectangle StrokeThickness="1"/>
+                                  <TextBox Margin="1"                
+                                           BorderThickness="0"
+                                           Background="Transparent"
+                                           VerticalAlignment="Center"
+                                           Padding="5"
+                                           Foreground="#CFCFCF"
+                                           x:Name="MessageBlock" TextChanged="MessageBlock_TextChanged" 
+                                           />
+                                  <TextBlock IsHitTestVisible="False"
+                                             Text="Message"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left"
+                                             Margin="10,0,0,0"
+                                             FontSize="11"
+                                             Foreground="DarkGray"
+                                             Grid.Column="1"
+                                             x:Name="PlaceHolder_1">
+                            
+                                      <TextBlock.Style>
+                                          <Style TargetType="{x:Type TextBlock}">
+                                              
+                                          </Style>
+                                      </TextBlock.Style>
+                                      
+                                  </TextBlock>
+                                  
+                              </Grid>
+     
+                         </Border>
+                        
+                        
+
+                        <Button x:Name="SendButton"
+                            Width="80"
+                             Margin="15,0,15,0"
+                            Style="{StaticResource Button_1Theme}" Click="SendButton_Click">
+                            <Button.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#9F715038"/>
+                                    <GradientStop Color="#2F715038" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Button.Background>
+                                Send
+                        </Button>
+                        
+                        
+                        
+                        
+
+                    </StackPanel>
+                </Grid>
+
+
+
+            
+          
+
+        </Grid>
+</Grid>
+    </Border>
+</Window>

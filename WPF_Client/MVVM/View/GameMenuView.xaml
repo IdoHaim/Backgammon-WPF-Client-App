@@ -1,0 +1,286 @@
+﻿<UserControl x:Class="WPF_Client.MVVM.View.GameMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Client.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+
+        <TextBlock x:Name="Header_1"
+               Foreground="White"
+               FontWeight="Bold"
+               FontSize="28"
+               HorizontalAlignment="Left"
+               Margin="0,0,0,20"/>
+
+        <StackPanel Orientation="Horizontal"
+                Margin="0,0,0,10">
+            <Border Width="400"
+                Height="200">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                        <GradientStop Color="#3aa0ff" Offset="0"/>
+                        <GradientStop Color="#ffc554" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                                   RadiusY="10"
+                                   Rect="0,0,400,200"/>
+                </Border.Clip>
+
+                <Grid>
+                        <Button x:Name="MatchMakingBTN"
+                                Height="200"
+                                Background="Transparent" 
+                                FontSize="18"
+                                BorderThickness="0"
+                                Click="MatchMakingBTN_Click"
+                                />
+                    
+                    <StackPanel>
+                        <TextBlock Text="Online"
+                               Foreground="White"
+                               FontSize="28"
+                               Margin="20,10,10,0"/>
+
+                        <TextBlock x:Name="OnlineTextBlock"                             
+                               Foreground="White"
+                               FontSize="18"
+                               Margin="20,10,10,0"/>
+
+
+                    </StackPanel>
+
+                    <Image Width="250"
+                       Height="250"
+                       Source="/Images/backgammon-board-1.png"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" 
+                       Margin="248,0,0,0"/>
+
+                </Grid>
+
+            </Border>
+
+            <Border Width="400"
+                Height="200"
+                CornerRadius="10"
+                Margin="45,0,0,0">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                        <GradientStop Color="#3aa0ff" Offset="1"/>
+                        <GradientStop Color="#ffc554" Offset="0.0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                    RadiusY="10"
+                    Rect="0,0,400,200"/>
+                </Border.Clip>
+
+                <Grid>
+
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <Button x:Name="PlayWithComputer"
+                                Content="Play With The&#x0a;  Computer"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="18"
+                                    Width="200"/>
+                    
+                            <Button x:Name="PlayWithFriend"
+                             Content="Play With a&#x0a;    Friend"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="18"
+                                    Width="200"
+                             Click="PlayWithFriend_Click" />
+                    </StackPanel>
+                    
+                    
+                    <StackPanel>
+                        <TextBlock Text="Offline"
+                Foreground="White"
+                FontSize="28"
+                Margin="20,10,10,0"/>
+
+                        <TextBlock x:Name="OfflineTextBlock"
+                
+                Foreground="White"
+                FontSize="18"
+                Margin="20,10,10,0"/>
+
+                        <StackPanel x:Name="OfflineButtnsPanel"
+                      Orientation="Horizontal"
+                      HorizontalAlignment="Center"                                   
+                      Height="140">
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+             
+
+                </Grid>
+
+
+            </Border>
+
+        </StackPanel>
+
+
+        <StackPanel>
+            <TextBlock 
+               Foreground="White"
+               FontWeight="Bold"
+               FontSize="20"
+               HorizontalAlignment="Left"
+               Margin="0,0,0,10 "/>
+            <StackPanel Orientation="Horizontal">
+
+                <Border Width="1200"
+                Height="auto"
+                Background="#3aa0ff"
+                CornerRadius="10"
+                Margin="10,10,10,10">
+
+                    
+                    
+                    
+                    <!-- Lists -->
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Invitations"
+                                   Foreground="White"
+               Grid.Column="0"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="20"/>
+
+                    
+                    <DataGrid
+        x:Name="InvitationsTable"
+        Grid.Row="1"
+        Grid.Column="0"
+        ColumnWidth="90"      
+        RowHeight="40"
+        RowBackground="Transparent"
+        Width="400"
+        CanUserResizeColumns="False"
+        AutoGenerateColumns="False"
+        GridLinesVisibility="Horizontal"
+        CanUserAddRows="False"
+        ItemsSource="{Binding invitationsRecived}"
+        Margin="20"
+        KeyboardNavigation.TabNavigation="Once">
+                        <DataGrid.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                                <GradientStop Color="#3aa0ff" Offset="0"/>
+                                <GradientStop Color="#ffc554" Offset="1"/>
+                            </LinearGradientBrush>
+                        </DataGrid.Background>
+                        <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding TargetUser.Username}" Header="Sender Name" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding TimeRecived}" Header="Recived at" IsReadOnly="True"/>
+                                <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Button x:Name="AcceptInvitationBTN" Content="✔️" Click="AcceptInvitationBTN_Click">
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="Black" Opacity="0.25"/>
+                                                </Button.Background>
+                                            </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Button x:Name="RejectInvitationBTN" Content="❌" Click="RejectInvitationBTN_Click">
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="Black" Opacity="0.25"/>
+                                                </Button.Background>
+                                            </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                    <!-- -->
+
+                    <TextBlock Text="Online Users"
+                               Foreground="White"
+       Grid.Column="1"
+       VerticalAlignment="Center"
+       HorizontalAlignment="Center"
+       FontSize="20"/>
+                        
+
+                    <DataGrid
+x:Name="OnlineUsersTable"
+Grid.Row="1"
+Grid.Column="1"
+ColumnWidth="90"      
+RowHeight="40"
+RowBackground="Transparent"
+Width="400"
+CanUserResizeColumns="False"
+AutoGenerateColumns="False"
+GridLinesVisibility="Horizontal"
+CanUserAddRows="False"
+ItemsSource="{Binding OnlineUsers}"
+Margin="20"
+KeyboardNavigation.TabNavigation="Once">
+                        <DataGrid.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                                <GradientStop Color="#eeeeee" Offset="0"/>
+                                <GradientStop Color="#ffc554" Offset="1"/>
+                            </LinearGradientBrush>
+                        </DataGrid.Background>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Username}" Header="Name" IsReadOnly="True"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="InviteUserBTN"  Content="Invite" Click="InviteUserBTN_Click" >
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="Black" Opacity="0.25"/>
+                                                </Button.Background>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                    </DataGrid>
+
+                    </Grid>
+
+
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+
+
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,159 @@
+﻿<UserControl x:Class="WPF_Client.MVVM.View.ChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WPF_Client.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            
+            <!-- Online -->
+
+            <Border Width="150"
+       Grid.Column="0"       
+CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                        <GradientStop Color="#3aa0ff" Offset="0"/>
+                        <GradientStop Color="#ffc554" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="Online Users"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"/>
+            </Border>
+
+            <DataGrid
+                x:Name="OnlineUsersTable"
+                Grid.Row="1"
+                Grid.Column="0"
+                ColumnWidth="90"      
+                RowHeight="40"
+                RowBackground="Transparent"
+                Width="400"
+                CanUserResizeColumns="False"
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                CanUserAddRows="False"
+                ItemsSource="{Binding OnlineUsers}"
+                Margin="20"
+                KeyboardNavigation.TabNavigation="Once">
+                <DataGrid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                        <GradientStop Color="#3aa0ff" Offset="0"/>
+                        <GradientStop Color="#ffc554" Offset="1"/>
+                    </LinearGradientBrush>
+                </DataGrid.Background>
+                <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Username}" Header="Name" IsReadOnly="True"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                                <Button x:Name="OpenChatBTN" Click="OpenChatBTN_Click" Content="Chat">
+                                    <Button.Background>
+                                        <SolidColorBrush Color="Black" Opacity="0.25"/>
+                                    </Button.Background>
+                                </Button>
+                                
+                            </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="InviteUserBTN" Click="InviteUserBTN_Click" Content="Invite">
+                                    <Button.Background>
+                                        <SolidColorBrush Color="Black" Opacity="0.25"/>
+                                    </Button.Background>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+        </DataGrid>
+
+            
+            <!-- Offline -->
+
+            <Border Width="150"
+               Grid.Column="1"       
+        CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                        <GradientStop Color="#eeeeee" Offset="0"/>
+                        <GradientStop Color="#ffc554" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <TextBlock Text="Offline Users"
+                      
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="20"/>
+            </Border>
+            
+
+            <DataGrid
+        x:Name="OfflineUsersTable"
+        Grid.Row="1"
+        Grid.Column="1"
+        ColumnWidth="90"      
+        RowHeight="40"
+        RowBackground="Transparent"
+        Width="400"
+        CanUserResizeColumns="False"
+        AutoGenerateColumns="False"
+        GridLinesVisibility="Horizontal"
+        CanUserAddRows="False"
+        ItemsSource="{Binding OfflineUsers}"
+        Margin="20"
+        KeyboardNavigation.TabNavigation="Once">
+                <DataGrid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                        <GradientStop Color="#eeeeee" Offset="0"/>
+                        <GradientStop Color="#ffc554" Offset="1"/>
+                    </LinearGradientBrush>
+                </DataGrid.Background>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Username}" 
+                                        Header="Name" 
+                                        IsReadOnly="True"
+                                        />
+                    
+                                        
+                   
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+
+
+
+        
+    </Grid>
+    
+    
+    
+</UserControl>

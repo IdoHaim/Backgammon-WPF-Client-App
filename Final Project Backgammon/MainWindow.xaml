@@ -1,0 +1,13 @@
+﻿<Window x:Class="Final_Project_Backgammon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dll="clr-namespace:Final_Project_Log_In.User_controls;assembly=Final Project Log In" 
+        xmlns:local="clr-namespace:Final_Project_Backgammon"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <dll:Log_In_Menu_1></dll:Log_In_Menu_1>
+    </Grid>
+</Window>
